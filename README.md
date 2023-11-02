@@ -111,3 +111,12 @@ You can also create code blocks using triple backticks:
 def greet(name):
     print(f"Hello, {name}!")
 ```
+
+# Employee Information
+
+| Employee Name | Department | Position       |
+| ------------- | ---------- | -------------- |
+| John Doe      | HR         | HR Manager     |
+| Jane Smith    | Sales      | Sales Executive|
+| Mark Johnson  | IT         | IT Specialist  |
+| Sarah Davis   | Marketing  | Marketing Manager|
