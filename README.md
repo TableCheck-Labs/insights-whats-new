@@ -42,7 +42,7 @@ You can create links like this: [Google](https://www.google.com)
 
 You can embed images like this:
 
-![Markdown Logo](https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.png)
+![Markdown Logo]([https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.png](https://images.freeimages.com/image/previews/c07/wild-wolf-mandala-5689721.png))
 
 ## Code
 
