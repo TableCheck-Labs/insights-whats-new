@@ -185,12 +185,30 @@ ReactDOM.render(
   document.querySelector('#content')
 )
 ```
+X^2^
+H~2~O
+I need to highlight these ==very important words==.
+That is so funny! :joy:
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+~~The world is flat.~~
 
-## More info?
+term
+: definition
 
-Much more info is available in the
-[readme on GitHub](https://github.com/remarkjs/react-markdown)!
+### My Great Heading {#custom-id}
 
-***
+Here's a sentence with a footnote. [^1]
 
-A component by [Espen Hovlandsdal](https://espen.codes/)
+[^1]: This is the footnote.
+
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+[title](https://www.example.com)
+
+---
