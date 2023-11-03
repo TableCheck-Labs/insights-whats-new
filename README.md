@@ -55,6 +55,18 @@ def greet(name):
     print(f"Hello, {name}!")
 ```
 
+# Employee Information
+
+| Employee Name | Department | Position       |
+| ------------- | ---------- | -------------- |
+| John Doe      | HR         | HR Manager     |
+| Jane Smith    | Sales      | Sales Executive|
+| Mark Johnson  | IT         | IT Specialist  |
+| Sarah Davis   | Marketing  | Marketing Manager|
+
+This table displays the information of different employees, including their names, departments, and positions.
+
+
 
 To create a \*bold\* text, enclose the text in double asterisks: **\*bold\**.
 
