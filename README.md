@@ -141,18 +141,6 @@ These features **do not work by default**.
 * [ ] task list
 * [x] checked item
 
-https://example.com
-
-## HTML in markdown
-
-⚠️ HTML in markdown is quite unsafe, but if you want to support it, you can
-use [`rehype-raw`](https://github.com/rehypejs/rehype-raw).
-You should probably combine it with
-[`rehype-sanitize`](https://github.com/rehypejs/rehype-sanitize).
-
-<blockquote>
-  👆 Use the toggle above to add the plugin.
-</blockquote>
 
 ## Components
 
