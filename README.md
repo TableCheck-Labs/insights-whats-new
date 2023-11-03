@@ -66,13 +66,14 @@ def greet(name):
 
 This table displays the information of different employees, including their names, departments, and positions.
 
+# Famous Quotes
 
+> "The only way to do great work is to love what you do." - **Steve Jobs**
 
-To create a \*bold\* text, enclose the text in double asterisks: **\*bold\**.
+> "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment." - **Ralph Waldo Emerson**
 
-To display a literal underscore \_, use \_ like this: \_italic\_.
+> "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe." - **Albert Einstein**
 
-If you want to include a literal backslash \\, escape it: \\\\. 
+These are some famous quotes from notable individuals. You can create blockquotes in Markdown by using the `>` symbol at the beginning of a line. They are commonly used to highlight and attribute quotes or passages in your text.
 
-To write HTML tags in Markdown, escape the less-than sign like this: \<div\>Content\</div\>.
 
