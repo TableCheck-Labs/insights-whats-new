@@ -1,3 +1,160 @@
+# Insight Microfrontend
+
+![Semaphore CI Status](https://tablecheck.semaphoreci.com/badges/insight-frontend/branches/main.svg?key=0270c8d6-6fae-4ee2-b7ed-085ec9e42594)
+
+Insight (previously Nexus) is a microfrontend that is a part of the [merchant portal](https://github.com/tablecheck/portal-frontend) and is built using single-spa and react. It is used provide users with relevant statistics and _insights_.
+
+## Prerequisits
+
+- [NVM](https://github.com/nvm-sh/nvm) for Node version management. Once you have it installed, run `nvm install` and it will use the version from `.nvmrc`.
+
+- NPM that is configured to use our [CodeArtifact repository](https://tablecheck.atlassian.net/wiki/spaces/INFRA/pages/1153532251/AWS+CodeArtifact).
+
+- Production account. Currently, insight only works in production and pilot environments. Local development setup is configured to use the pilot environment by default. See `config/development.json` and `config/default.json` for more details.
+
+## Installation
+
+Install dependencies
+
+```sh
+npm install
+```
+
+## Development
+
+To start the project, follow the steps below.
+
+### 1. Disabling CORS in your browser
+
+Due to the current setup, it is not possible to run the project locally with CORS enabled.
+
+You can use any browser, but Chromium-based options are the most reliable.
+
+Start Chromium on Linux:
+
+```sh
+chromium --disable-web-security --user-data-dir="/tmp/chromium-dev-session"
+```
+
+For MacOS, use:
+
+```sh
+/Applications/Chromium.app/Contents/MacOS/Chromium --disable-web-security --user-data-dir="/tmp/chromium-dev-session"
+```
+
+Adjust the commands to start the browser you want.
+
+### 2. Getting Authentication Data from the Hosted Website
+
+The local app is currently unable to handle logins, and all requests to the Insight API server will be rejected. Instead, you will need to go to the hosted version of Insight and login to your account. The hosted version for pilot is <https://app.pilot.tablecheck.com/insight/overview>.
+
+Once done, you will need to copy all of the data from the local storage of the hosted website to your local app. You can either do this manually or with an extension such as [LocalStorage Manager](https://chrome.google.com/webstore/detail/localstorage-manager/fkhoimdhngkiicbjobkinobjkoefhkap). Repeat this step if you get logged out.
+
+WARNING: Auth doesn't work for pilot, so you need to enable throttling in your browser and paste the values while you are in the app.
+
+### 3. Running the project
+
+Start the app standalone:
+
+```sh
+npm run start
+```
+
+Start the app as a part of the merchant portal:
+
+```sh
+npm run start:sspa
+```
+
+Start the app as a part of the merchant portal and simulate the settings passing event for the export dashboard:
+
+> Tip: search for RAZZLE_IS_EXPORT in the repository for more details
+
+```sh
+npm run start:export
+```
+
+Start storybook:
+
+```sh
+npm run start:storybook
+```
+
+## Testing
+
+We use jest for unit tests and cypress for integration tests.
+
+Run unit tests:
+
+```sh
+npm run test:watch
+```
+
+Run integration tests:
+
+```sh
+npm run test:integration:dev
+```
+
+## Translations
+
+We use [lokalise](https://app.lokalise.com/project/543048415d6776260dcd79.51503004/) to manage translations. To update translations in `src/i18n/locales`, you need to install and configure [lokalise2](https://github.com/lokalise/lokalise-cli-2-go). Once done, run
+
+```sh
+npm run i18n:download
+```
+
+## Validation
+
+Run TC's linting script:
+
+```sh
+npm run lint
+```
+
+Dry-run release step (requires a GitHub personal token):
+
+```sh
+npm run release
+```
+
+Run TypeScript compiler
+
+```sh
+npm run tsc:watch
+```
+
+## Building
+
+Build the app:
+
+```sh
+npm run build
+```
+
+Build storybook:
+
+```sh
+npm run build:storybook
+```
+
+## Releasing
+
+Insight follows the [Semantic Release](https://github.com/semantic-release/semantic-release) approach.
+
+- Trigger `Release` promotion for the latest commit on [Semaphore pipeline](https://tablecheck.semaphoreci.com/branches/82056eb1-a873-4798-9ffb-4188dd982f48) (`main` branch)
+- Trigger `Deploy production` promotion for created tag on [Semaphore pipeline](https://tablecheck.semaphoreci.com/projects/insight-frontend?type=tag)
+
+See [Semaphore latest deployments](https://tablecheck.semaphoreci.com/dashboards/app-v4) for more information.
+
+## Running Server Locally
+
+If you need to configure the app to point to a locally running [API server](https://github.com/tablecheck/nexus), refer to the `config/custom-environment-variables.json` file for the available environment variables.
+
+## Documentation
+
+Learn more about the project at [Confluence](https://tablecheck.atlassian.net/wiki/spaces/NE/overview?homepageId=43024749)
+
 <!--
 Notes for maintaining this document:
 
