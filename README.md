@@ -120,3 +120,12 @@ def greet(name):
 | Jane Smith    | Sales      | Sales Executive|
 | Mark Johnson  | IT         | IT Specialist  |
 | Sarah Davis   | Marketing  | Marketing Manager|
+
+To create a \*bold\* text, enclose the text in double asterisks: **\*bold\**.
+
+To display a literal underscore \_, use \_ like this: \_italic\_.
+
+If you want to include a literal backslash \\, escape it: \\\\. 
+
+To write HTML tags in Markdown, escape the less-than sign like this: \<div\>Content\</div\>.
+
