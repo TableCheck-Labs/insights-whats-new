@@ -256,66 +256,6 @@ In Deno with [Skypack][]:
 import ReactMarkdown from 'https://cdn.skypack.dev/react-markdown@7?dts'
 ```
 
-In browsers with [Skypack][]:
-
-```html
-<script type="module">
-  import ReactMarkdown from 'https://cdn.skypack.dev/react-markdown@7?min'
-</script>
-```
-
-## Use
-
-A basic hello world:
-
-```jsx
-import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import ReactDom from 'react-dom'
-
-ReactDom.render(<ReactMarkdown># Hello, *world*!</ReactMarkdown>, document.body)
-```
-
-<details>
-<summary>Show equivalent JSX</summary>
-
-```jsx
-<h1>
-  Hello, <em>world</em>!
-</h1>
-```
-
-</details>
-
-Here is an example that shows passing the markdown as a string and how
-to use a plugin ([`remark-gfm`][gfm], which adds support for strikethrough,
-tables, tasklists and URLs directly):
-
-```jsx
-import React from 'react'
-import ReactDom from 'react-dom'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-
-const markdown = `Just a link: https://reactjs.com.`
-
-ReactDom.render(
-  <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />,
-  document.body
-)
-```
-
-<details>
-<summary>Show equivalent JSX</summary>
-
-```jsx
-<p>
-  Just a link: <a href="https://reactjs.com">https://reactjs.com</a>.
-</p>
-```
-
-</details>
-
 ## API
 
 This package exports the following identifier:
@@ -385,68 +325,7 @@ This example shows how to use a remark plugin.
 In this case, [`remark-gfm`][gfm], which adds support for strikethrough, tables,
 tasklists and URLs directly:
 
-```jsx
-import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import ReactDom from 'react-dom'
-import remarkGfm from 'remark-gfm'
 
-const markdown = `A paragraph with *emphasis* and **strong importance**.
-
-> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
-
-* Lists
-* [ ] todo
-* [x] done
-
-A table:
-
-| a | b |
-| - | - |
-`
-
-ReactDom.render(
-  <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />,
-  document.body
-)
-```
-
-<details>
-<summary>Show equivalent JSX</summary>
-
-```jsx
-<>
-  <p>
-    A paragraph with <em>emphasis</em> and <strong>strong importance</strong>.
-  </p>
-  <blockquote>
-    <p>
-      A block quote with <del>strikethrough</del> and a URL:{' '}
-      <a href="https://reactjs.org">https://reactjs.org</a>.
-    </p>
-  </blockquote>
-  <ul>
-    <li>Lists</li>
-    <li>
-      <input checked={false} readOnly={true} type="checkbox" /> todo
-    </li>
-    <li>
-      <input checked={true} readOnly={true} type="checkbox" /> done
-    </li>
-  </ul>
-  <p>A table:</p>
-  <table>
-    <thead>
-      <tr>
-        <td>a</td>
-        <td>b</td>
-      </tr>
-    </thead>
-  </table>
-</>
-```
-
-</details>
 
 ### Use a plugin with options
 
@@ -469,16 +348,7 @@ ReactDom.render(
 )
 ```
 
-<details>
-<summary>Show equivalent JSX</summary>
 
-```jsx
-<p>
-  This ~is not~ strikethrough, but <del>this is</del>!
-</p>
-```
-
-</details>
 
 ### Use custom components (syntax highlight)
 
@@ -488,60 +358,7 @@ In this case, we apply syntax highlighting with the seriously super amazing
 [`react-syntax-highlighter`][react-syntax-highlighter] by
 [**@conorhastings**][conor]:
 
-```jsx
-import React from 'react'
-import ReactDom from 'react-dom'
-import ReactMarkdown from 'react-markdown'
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
-import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-// Did you know you can use tildes instead of backticks for code in markdown? ✨
-const markdown = `Here is some JavaScript code:
-
-~~~js
-console.log('It works!')
-~~~
-`
-
-ReactDom.render(
-  <ReactMarkdown
-    children={markdown}
-    components={{
-      code({node, inline, className, children, ...props}) {
-        const match = /language-(\w+)/.exec(className || '')
-        return !inline && match ? (
-          <SyntaxHighlighter
-            children={String(children).replace(/\n$/, '')}
-            style={dark}
-            language={match[1]}
-            PreTag="div"
-            {...props}
-          />
-        ) : (
-          <code className={className} {...props}>
-            {children}
-          </code>
-        )
-      }
-    }}
-  />,
-  document.body
-)
-```
-
-<details>
-<summary>Show equivalent JSX</summary>
-
-```jsx
-<>
-  <p>Here is some JavaScript code:</p>
-  <pre>
-    <SyntaxHighlighter language="js" style={dark} PreTag="div" children="console.log('It works!')" />
-  </pre>
-</>
-```
-
-</details>
 
 ### Use remark and rehype plugins (math)
 
@@ -549,46 +366,7 @@ This example shows how a syntax extension (through [`remark-math`][math])
 is used to support math in markdown, and a transform plugin
 ([`rehype-katex`][katex]) to render that math.
 
-```jsx
-import React from 'react'
-import ReactDom from 'react-dom'
-import ReactMarkdown from 'react-markdown'
-import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
 
-import 'katex/dist/katex.min.css' // `rehype-katex` does not import the CSS for you
-
-ReactDom.render(
-  <ReactMarkdown
-    children={`The lift coefficient ($C_L$) is a dimensionless coefficient.`}
-    remarkPlugins={[remarkMath]}
-    rehypePlugins={[rehypeKatex]}
-  />,
-  document.body
-)
-```
-
-<details>
-<summary>Show equivalent JSX</summary>
-
-```jsx
-<p>
-  The lift coefficient (
-  <span className="math math-inline">
-    <span className="katex">
-      <span className="katex-mathml">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">{/* … */}</math>
-      </span>
-      <span className="katex-html" aria-hidden="true">
-        {/* … */}
-      </span>
-    </span>
-  </span>
-  ) is a dimensionless coefficient.
-</p>
-```
-
-</details>
 
 ## Plugins
 
@@ -668,34 +446,7 @@ However, if you are in a trusted environment (you trust the markdown), and
 can spare the bundle size (±60kb minzipped), then you can use
 [`rehype-raw`][raw]:
 
-```jsx
-import React from 'react'
-import ReactDom from 'react-dom'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
 
-const input = `<div class="note">
-
-Some *emphasis* and <strong>strong</strong>!
-
-</div>`
-
-ReactDom.render(
-  <ReactMarkdown rehypePlugins={[rehypeRaw]} children={input} />,
-  document.body
-)
-```
-
-<details>
-<summary>Show equivalent JSX</summary>
-
-```jsx
-<div class="note">
-  <p>Some <em>emphasis</em> and <strong>strong</strong>!</p>
-</div>
-```
-
-</details>
 
 **Note**: HTML in markdown is still bound by how [HTML works in
 CommonMark][cm-html].
