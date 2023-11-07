@@ -409,20 +409,6 @@ You can use a bundler (such as esbuild, webpack, or Rollup) to use this package
 in your project, and use its options (or plugins) to add support for legacy
 browsers.
 
-## Architecture
-
-<pre><code>                                                           react-markdown
-         +----------------------------------------------------------------------------------------------------------------+
-         |                                                                                                                |
-         |  +----------+        +----------------+        +---------------+       +----------------+       +------------+ |
-         |  |          |        |                |        |               |       |                |       |            | |
-<a href="https://commonmark.org">markdown</a>-+->+  <a href="https://github.com/remarkjs/remark">remark</a>  +-<a href="https://github.com/syntax-tree/mdast">mdast</a>->+ <a href="https://github.com/remarkjs/remark/blob/main/doc/plugins.md">remark plugins</a> +-<a href="https://github.com/syntax-tree/mdast">mdast</a>->+ <a href="https://github.com/remarkjs/remark-rehype">remark-rehype</a> +-<a href="https://github.com/syntax-tree/hast">hast</a>->+ <a href="https://github.com/rehypejs/rehype/blob/main/doc/plugins.md">rehype plugins</a> +-<a href="https://github.com/syntax-tree/hast">hast</a>->+ <a href="#appendix-b-components">components</a> +-+->react elements
-         |  |          |        |                |        |               |       |                |       |            | |
-         |  +----------+        +----------------+        +---------------+       +----------------+       +------------+ |
-         |                                                                                                                |
-         +----------------------------------------------------------------------------------------------------------------+
-</code></pre>
-
 To understand what this project does, it’s important to first understand what
 unified does: please read through the [`unifiedjs/unified`][unified] readme (the
 part until you hit the API section is required reading).
