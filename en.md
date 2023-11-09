@@ -13,4 +13,4 @@ We're happy to announce the following improvements to your Insight experience!
 * Optimising your revenue from the beach in another timezone? Now you can easily look up your venue's timezones directly within Insight!
 * :yen: Now you can view the customer revenue tier values directly within the EDM customer spending chart. :chart_with_upwards_trend:
 * :star: Our locale matching for EDM has been improved is more accurate than ever! :dart:
-* :arrow_upper_left: Quality of life improvement - Clear your EDM campaign selection :bubbles:
+* :arrow_upper_left: Quality of life improvement - Clear your EDM campaign selection
